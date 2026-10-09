@@ -229,8 +229,9 @@ def classify_network(host, exit_org, is_datacenter=None):
     return "unknown"
 
 def check_one(node, session):
+    log(f"check one ", f"正在检测的URL {WORKER_CHECK_URL} /n")
     url = WORKER_CHECK_URL + quote(f"{node['host']}:{node['port']}", safe="")
-    log("VPN GATE", f"正在检测的URL {url} /n")
+    log(f"{node['host']}:{node['port']}", f"正在检测的URL {url} /n")
     out = dict(node)
     out["protocol"] = "sstp"
     out["link"] = f"sstp://vpn:vpn@{node['host']}:{node['port']}"
